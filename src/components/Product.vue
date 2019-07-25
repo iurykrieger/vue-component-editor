@@ -4,6 +4,7 @@
     <meta itemprop="sku" :content="sku" />
     <meta itemprop="description" :content="description" />
     <div
+      class="rating"
       v-if="rating"
       itemprop="aggregateRating"
       itemscope
@@ -14,11 +15,14 @@
       <meta itemprop="ratingCount" :value="rating.count" />
       <Rating :best="rating.best" :value="rating.value" :count="rating.count" />
     </div>
-    <a itemprop="url" :href="url">
-      <span itemprop="name">{{ name }}</span>
-    </a>
-    <span itemprop="brand">{{ brand }}</span>
+    <div class="description">
+      <span itemprop="brand">{{ brand }}</span>
+      <a itemprop="url" :href="url">
+        <span itemprop="name">{{ name }}</span>
+      </a>
+    </div>
     <div
+      class="offers"
       itemprop="offers"
       itemscope
       itemtype="http://schema.org/AggregateOffer"
@@ -27,15 +31,15 @@
       <meta itemprop="availability" :content="availabilitySchema" />
       <meta itemprop="priceCurrency" :content="currency" />
       <meta itemprop="itemCondition" :content="itemConditionSchema" />
-      <meta itemprop="lowPrice" :content="lowPrice" />
       <meta itemprop="highPrice" :content="highPrice" />
-      <Number format="currency" :value="lowPrice" />to
-      <Number v-if="highPrice" format="currency" :value="highPrice" />from
-      <Number
+      <meta itemprop="lowPrice" :content="lowPrice" />
+      <Number v-if="highPrice" format="currency" :value="highPrice" class="high-price" />
+      <Number format="currency" :value="lowPrice" class="low-price" />
+      <meta
         v-if="sellerCount"
         itemprop="offerCount"
-        :value="sellerCount"
-      />sellers
+        :content="sellerCount"
+      />
     </div>
   </div>
 </template>
@@ -125,4 +129,20 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+span {
+  display: block;
+}
+
+.description  {
+  padding: $base-size;
+}
+
+.offers .currency {
+  display: block;
+
+  &.low-price {
+    font-weight: bold;
+  }
+}
+</style>

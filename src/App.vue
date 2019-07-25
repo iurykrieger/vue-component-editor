@@ -12,17 +12,25 @@
 @import 'normalize-scss';
 @include normalize();
 
-body {
-  background-color: $background-color;
+a {
+  text-decoration: none;
+  color: $text-color;
+  font-weight: bold;
+
+  &:hover {
+    color: $hover-color;
+  }
 }
+
 #app {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $text-color;
-
+  background-color: $background-color;
 }
+
 #nav {
   padding: 30px;
   a {
