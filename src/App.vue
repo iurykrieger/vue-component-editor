@@ -9,6 +9,9 @@
 </template>
 
 <style lang="scss">
+@import 'normalize-scss';
+@include normalize();
+
 body {
   background-color: $background-color;
 }
@@ -18,6 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $text-color;
+
 }
 #nav {
   padding: 30px;

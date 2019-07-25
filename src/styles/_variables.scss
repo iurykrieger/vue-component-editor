@@ -1,17 +1,26 @@
+/********************************************
+  =======================
+  DEFAULT COMPONENT'S CSS
+  =======================
+  Most of the style is inside each component.
+  Here we have some things that are used all around the application.
+ ********************************************/
+
+$base-size: 8px; // This will be used in fonts and paddings
 
 /**
- *
- * APPLICATION FONTS
- *
+ =======================
+  FONTS
+ =======================
  */
 $font-family: "Avenir", Helvetica, Arial, sans-serif;
 
 $font-size: 1em;
 
 /**
- *
- * APPLICATION COLORS
- *
+ =======================
+  COLORS
+ =======================
  */
 $background-color: #FFFFFF;
 
