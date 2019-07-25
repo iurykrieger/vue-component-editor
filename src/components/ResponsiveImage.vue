@@ -17,9 +17,10 @@ export default {
 };
 </script>
 
-<style type="scss" scoped>
+<style scoped type="scss">
 img {
   width: 100%;
   height: 100%;
+  border: none;
 }
 </style>

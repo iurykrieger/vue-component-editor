@@ -9,9 +9,10 @@
       itemscope
       itemtype="http://schema.org/AggregateRating"
     >
-      <Number itemprop="ratingValue" :value="rating.value" />out of
-      <Number itemprop="bestRating" :value="rating.best" />based on
-      <Number itemprop="ratingCount" :value="rating.count" />user ratings
+      <meta itemprop="ratingValue" :content="rating.value" />
+      <meta itemprop="bestRating" :conent="rating.best" />
+      <meta itemprop="ratingCount" :value="rating.count" />
+      <Rating :best="rating.best" :value="rating.value" :count="rating.count" />
     </div>
     <a itemprop="url" :href="url">
       <span itemprop="name">{{ name }}</span>
@@ -42,6 +43,7 @@
 <script>
 import ResponsiveImage from "@/components/ResponsiveImage";
 import NumberFormatter from "@/components/Number";
+import Rating from "@/components/Rating";
 import { mapState } from "vuex";
 import { URL } from "url";
 
@@ -49,7 +51,8 @@ export default {
   name: "Product",
   components: {
     ResponsiveImage,
-    Number: NumberFormatter
+    Number: NumberFormatter,
+    Rating
   },
   props: {
     sku: {

@@ -1,5 +1,5 @@
 <template>
-  <span>{{ formattedNumber }}</span>
+  <span class="number" :class="format">{{ formattedNumber }}</span>
 </template>
 
 <script>
@@ -47,4 +47,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>
