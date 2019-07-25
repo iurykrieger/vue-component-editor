@@ -33,13 +33,14 @@
       <meta itemprop="itemCondition" :content="itemConditionSchema" />
       <meta itemprop="highPrice" :content="highPrice" />
       <meta itemprop="lowPrice" :content="lowPrice" />
-      <Number v-if="highPrice" format="currency" :value="highPrice" class="high-price" />
-      <Number format="currency" :value="lowPrice" class="low-price" />
-      <meta
-        v-if="sellerCount"
-        itemprop="offerCount"
-        :content="sellerCount"
+      <Number
+        v-if="highPrice"
+        format="currency"
+        :value="highPrice"
+        class="high-price"
       />
+      <Number format="currency" :value="lowPrice" class="low-price" />
+      <meta v-if="sellerCount" itemprop="offerCount" :content="sellerCount" />
     </div>
   </div>
 </template>
@@ -134,7 +135,7 @@ span {
   display: block;
 }
 
-.description  {
+.description {
   padding: $base-size;
 }
 

@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss">
-@import 'normalize-scss';
+@import "normalize-scss";
 @include normalize();
 
 a {
