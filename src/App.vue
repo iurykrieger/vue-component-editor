@@ -2,9 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/component-editor">Component Editor</router-link>
     </div>
-    <router-view />
+    <router-view class="content" />
   </div>
 </template>
 
@@ -34,7 +34,14 @@ body {
 }
 
 #nav {
-  padding: 30px;
+  background-color: #FFF;
+  position: fixed!important;
+  z-index: 1;
+  overflow: auto;
+  height: 100%;
+  width: 20%;
+  box-shadow: $box-shadow;
+
   a {
     font-weight: bold;
     color: $hover-color;
@@ -42,5 +49,12 @@ body {
       color: $action-color;
     }
   }
+}
+
+.content {
+  margin-left: 20%;
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }
 </style>

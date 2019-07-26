@@ -1,29 +1,5 @@
 <template>
   <div class="home">
-    <Widget />
+    <h1>This is an home page</h1>
   </div>
 </template>
-
-<script>
-import Widget from "@/components/Widget";
-
-export default {
-  name: "Home",
-  components: {
-    Widget
-  }
-};
-</script>
-
-<style lang="scss" scoped>
-.home {
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .home {
-    width: calc(100% - 22px);
-  }
-}
-</style>
