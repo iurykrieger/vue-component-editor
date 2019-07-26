@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  max-width: 900px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 

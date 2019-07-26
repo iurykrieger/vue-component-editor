@@ -8,12 +8,14 @@
 
 $base-size: 8px; // This will be used in fonts and paddings
 
+$transition: 0.4s all;
+
 /**
  =======================
   FONTS
  =======================
  */
-$font-family: "Avenir", Helvetica, Arial, sans-serif;
+$font-family: montserrat-regular; // "Avenir", Helvetica, Arial, sans-serif;
 
 $font-size: 1em;
 
@@ -22,7 +24,7 @@ $font-size: 1em;
   COLORS
  =======================
  */
-$background-color: #FFFFFF;
+$background-color: #F2F2F2;
 
 $text-color: #696D7D;
 
@@ -31,3 +33,9 @@ $action-color: #68B0AB;
 $disabled-color: #C8D5B9;
 
 $hover-color: #8FC0A9;
+
+$accent-color: #22b14c;
+
+$box-shadow: 0 2px 5px 0 rgba(0,0,0,.08);
+
+$box-shadow-hover: 0 2px 10px 0 rgba(0,0,0,.2);

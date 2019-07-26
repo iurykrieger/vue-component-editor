@@ -1,46 +1,60 @@
 <template>
   <div class="product" itemtype="http://schema.org/Product" itemscope>
-    <ResponsiveImage itemprop="image" :src="thumbnail" />
     <meta itemprop="sku" :content="sku" />
     <meta itemprop="description" :content="description" />
-    <div
-      class="rating"
-      v-if="rating"
-      itemprop="aggregateRating"
-      itemscope
-      itemtype="http://schema.org/AggregateRating"
-    >
-      <meta itemprop="ratingValue" :content="rating.value" />
-      <meta itemprop="bestRating" :conent="rating.best" />
-      <meta itemprop="ratingCount" :value="rating.count" />
-      <Rating :best="rating.best" :value="rating.value" :count="rating.count" />
-    </div>
-    <div class="description">
-      <span itemprop="brand">{{ brand }}</span>
-      <a itemprop="url" :href="url">
-        <span itemprop="name">{{ name }}</span>
+    <div class="product-thumbnail">
+      <a :href="url">
+        <ResponsiveImage itemprop="image" :src="thumbnail" />
       </a>
     </div>
-    <div
-      class="offers"
-      itemprop="offers"
-      itemscope
-      itemtype="http://schema.org/AggregateOffer"
-    >
-      <meta :href="url" />
-      <meta itemprop="availability" :content="availabilitySchema" />
-      <meta itemprop="priceCurrency" :content="currency" />
-      <meta itemprop="itemCondition" :content="itemConditionSchema" />
-      <meta itemprop="highPrice" :content="highPrice" />
-      <meta itemprop="lowPrice" :content="lowPrice" />
-      <Number
-        v-if="highPrice"
-        format="currency"
-        :value="highPrice"
-        class="high-price"
-      />
-      <Number format="currency" :value="lowPrice" class="low-price" />
-      <meta v-if="sellerCount" itemprop="offerCount" :content="sellerCount" />
+    <div class="product-content">
+      <div
+        class="product-rating"
+        v-if="rating"
+        itemprop="aggregateRating"
+        itemscope
+        itemtype="http://schema.org/AggregateRating"
+      >
+        <meta itemprop="ratingValue" :content="rating.value" />
+        <meta itemprop="bestRating" :conent="rating.best" />
+        <meta itemprop="ratingCount" :value="rating.count" />
+        <Rating :best="rating.best" :value="rating.value" :count="rating.count" />
+      </div>
+      <div class="product-description">
+        <span class="product-brand" itemprop="brand">{{ brand }}</span>
+        <a itemprop="url" :href="url">
+          <span itemprop="name">{{ name }}</span>
+        </a>
+      </div>
+      <div
+        class="offers"
+        itemprop="offers"
+        itemscope
+        itemtype="http://schema.org/AggregateOffer"
+      >
+        <meta itemprop="availability" :content="availabilitySchema" />
+        <meta itemprop="priceCurrency" :content="currency" />
+        <meta itemprop="itemCondition" :content="itemConditionSchema" />
+        <meta itemprop="highPrice" :content="highPrice" />
+        <meta itemprop="lowPrice" :content="lowPrice" />
+        <span class="high-price-label">
+          de <Number
+            v-if="highPrice"
+            format="currency"
+            :value="highPrice"
+            class="high-price"
+          />
+        </span>
+        <span class="low-price-label">
+          por
+          <Number
+            format="currency"
+            :value="lowPrice"
+            class="low-price"
+          />
+        </span>
+        <meta v-if="sellerCount" itemprop="offerCount" :content="sellerCount" />
+      </div>
     </div>
   </div>
 </template>
@@ -131,19 +145,56 @@ export default {
 </script>
 
 <style scoped lang="scss">
-span {
+span, a {
   display: block;
+  font-weight: 500;
 }
 
-.description {
-  padding: $base-size;
+.product {
+  border-radius: $base-size;
+  box-shadow: $box-shadow;
+  background-color: #FFF;
+  margin: $base-size / 2;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $box-shadow-hover;
+  }
 }
 
-.offers .currency {
+.product-thumbnail {
   display: block;
+  height: 180px;
+  margin: $base-size auto 0;
+  padding: $base-size * 2;
+}
+
+.product-content {
+  border-top: 1px solid #DDD;
+  padding: $base-size * 1.5;
+  text-align: left;
+}
+
+.product-description {
+  margin: $base-size 0;
+}
+
+.product-brand {
+  margin-bottom: $base-size;
+  font-size: 0.8em;
+}
+
+.currency {
+  display: inline-block;
+  font-size: 1.2em;
 
   &.low-price {
     font-weight: bold;
+    color: $accent-color;
+  }
+
+  &.high-price {
+    text-decoration: line-through;
   }
 }
 </style>

@@ -15,11 +15,15 @@
 a {
   text-decoration: none;
   color: $text-color;
-  font-weight: bold;
+  // font-weight: bold;
 
   &:hover {
     color: $hover-color;
   }
+}
+
+body {
+  background-color: $background-color;
 }
 
 #app {
@@ -28,7 +32,6 @@ a {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $text-color;
-  background-color: $background-color;
 }
 
 #nav {

@@ -41,8 +41,8 @@ export default {
           sku: "1234",
           url: "https://example.com",
           thumbnail:
-            "https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176003_1.jpg",
-          name: "Produto Teste",
+            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
+          name: "Produto Teste com um nome um pouco maior do que o normal",
           brand: "SEPHORA",
           description: "Product description",
           rating: {
@@ -58,7 +58,7 @@ export default {
           sku: "1235",
           url: "https://example.com",
           thumbnail:
-            "https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176006_1.jpg",
+            "https://thumbs.buscape.com.br/tv/smart-tv-full-hd-aoc-led-43-polegadas-le43s5970_300x300-PU9ae3d_1.jpg",
           name: "Produto Teste",
           brand: "SEPHORA",
           description: "Product description",
@@ -75,7 +75,7 @@ export default {
           sku: "1232",
           url: "https://example.com",
           thumbnail:
-            "https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176006_1.jpg",
+            "https://thumbs.buscape.com.br/livros/a-sutil-arte-de-ligar-o-f-da-se-manson-mark-855100249x_300x300-PU6e929559_1.jpg",
           name: "Produto Teste",
           brand: "SEPHORA",
           description: "Product description",
@@ -92,8 +92,8 @@ export default {
           sku: "1231",
           url: "https://example.com",
           thumbnail:
-            "https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176006_1.jpg",
-          name: "Produto Teste",
+            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
+          name: "Smart TV 4K Ultra HD LG LED 65 polegadas 65UK6530PSF",
           brand: "SEPHORA",
           description: "Product description",
           rating: {
@@ -109,7 +109,7 @@ export default {
           sku: "12",
           url: "https://example.com",
           thumbnail:
-            "https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176006_1.jpg",
+            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
           name: "Produto Teste",
           brand: "SEPHORA",
           description: "Product description",
@@ -128,4 +128,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>
