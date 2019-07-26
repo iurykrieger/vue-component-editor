@@ -156,6 +156,7 @@ span, a {
   background-color: #FFF;
   margin: $base-size / 2;
   transition: $transition;
+  min-height: 97%;
 
   &:hover {
     box-shadow: $box-shadow-hover;
@@ -164,7 +165,6 @@ span, a {
 
 .product-thumbnail {
   display: block;
-  height: 180px;
   margin: $base-size auto 0;
   padding: $base-size * 2;
 }
@@ -186,7 +186,7 @@ span, a {
 
 .currency {
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 1.1em;
 
   &.low-price {
     font-weight: bold;

@@ -15,7 +15,6 @@
 a {
   text-decoration: none;
   color: $text-color;
-  // font-weight: bold;
 
   &:hover {
     color: $hover-color;

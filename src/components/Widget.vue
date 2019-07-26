@@ -129,5 +129,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.widget {
+  height: 100%;
+}
 </style>
