@@ -18,7 +18,11 @@
         <meta itemprop="ratingValue" :content="rating.value" />
         <meta itemprop="bestRating" :conent="rating.best" />
         <meta itemprop="ratingCount" :value="rating.count" />
-        <Rating :best="rating.best" :value="rating.value" :count="rating.count" />
+        <Rating
+          :best="rating.best"
+          :value="rating.value"
+          :count="rating.count"
+        />
       </div>
       <div class="product-description">
         <span class="product-brand" itemprop="brand">{{ brand }}</span>
@@ -38,7 +42,8 @@
         <meta itemprop="highPrice" :content="highPrice" />
         <meta itemprop="lowPrice" :content="lowPrice" />
         <span class="high-price-label">
-          de <Number
+          de
+          <Number
             v-if="highPrice"
             format="currency"
             :value="highPrice"
@@ -47,11 +52,7 @@
         </span>
         <span class="low-price-label">
           por
-          <Number
-            format="currency"
-            :value="lowPrice"
-            class="low-price"
-          />
+          <Number format="currency" :value="lowPrice" class="low-price" />
         </span>
         <meta v-if="sellerCount" itemprop="offerCount" :content="sellerCount" />
       </div>
@@ -145,7 +146,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-span, a {
+span,
+a {
   display: block;
   font-weight: 500;
 }
@@ -153,7 +155,7 @@ span, a {
 .product {
   border-radius: $base-size;
   box-shadow: $box-shadow;
-  background-color: #FFF;
+  background-color: #fff;
   margin: $base-size / 2;
   transition: $transition;
   min-height: 97%;
@@ -170,7 +172,7 @@ span, a {
 }
 
 .product-content {
-  border-top: 1px solid #DDD;
+  border-top: 1px solid #ddd;
   padding: $base-size * 1.5;
   text-align: left;
 }
