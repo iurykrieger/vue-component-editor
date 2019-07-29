@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/component-editor">Component Editor</router-link>
     </div>
-    <router-view class="content" />
+    <router-view id="content" />
   </div>
 </template>
 
@@ -20,7 +20,9 @@ a {
     color: $hover-color;
   }
 }
+</style>
 
+<style lang="scss" scoped>
 body {
   background-color: $background-color;
 }
@@ -51,10 +53,8 @@ body {
   }
 }
 
-.content {
+#content {
   margin-left: 20%;
-  width: 100%;
-  height: 100%;
-  background-color: red;
+  position: fixed;
 }
 </style>
