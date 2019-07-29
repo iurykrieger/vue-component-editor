@@ -1,5 +1,6 @@
 <template>
-  <input v-if="isCheckbox"
+  <input
+    v-if="isCheckbox"
     class="impulse-input"
     type="checkbox"
     :class="{ disabled }"
@@ -10,7 +11,8 @@
     @focus.capture="onFocusGain"
     @blur.capture="onFocusLoss"
   />
-  <input v-else-if="isRadio"
+  <input
+    v-else-if="isRadio"
     class="impulse-input"
     type="radio"
     :class="{ disabled }"
@@ -22,7 +24,8 @@
     @focus.capture="onFocusGain"
     @blur.capture="onFocusLoss"
   />
-  <input v-else
+  <input
+    v-else
     autocomplete="off"
     class="impulse-input"
     :class="{ disabled }"
@@ -39,12 +42,12 @@
 
 <script>
 export default {
-  name: 'TextInput',
+  name: "TextInput",
   directives: {
     autoFocus: {
-      inserted: function (el) {
+      inserted: function(el) {
         if (this.autoFocus) {
-          el.focus()
+          el.focus();
         }
       }
     }
@@ -55,7 +58,7 @@ export default {
      */
     type: {
       type: String,
-      default: 'text'
+      default: "text"
     },
     /**
      * Set name of input
@@ -100,22 +103,22 @@ export default {
      * @vuese
      * Verify if component input is checkbox
      */
-    isCheckbox () {
-      return this.type === 'checkbox'
+    isCheckbox() {
+      return this.type === "checkbox";
     },
     /**
      * @vuese
      * Verify if component input is radio
      */
-    isRadio () {
-      return this.type === 'radio'
+    isRadio() {
+      return this.type === "radio";
     },
     /**
      * @vuese
      * Verify if component input is radio checked
      */
-    isRadioChecked () {
-      return this.value === this.label
+    isRadioChecked() {
+      return this.value === this.label;
     }
   },
   methods: {
@@ -123,23 +126,23 @@ export default {
      * @vuese
      * Emit event if the component gain the focus
      */
-    onFocusGain (event) {
-      this.$emit('focus-gain', event)
+    onFocusGain(event) {
+      this.$emit("focus-gain", event);
     },
     /**
      * @vuese
      * Emit event if the component loss the focus
      */
-    onFocusLoss (event) {
-      this.$emit('focus-loss', event)
+    onFocusLoss(event) {
+      this.$emit("focus-loss", event);
     },
     /**
      * @vuese
      * Emit event with value if the component not disabled
      */
-    onInput (event) {
+    onInput(event) {
       if (!this.disabled) {
-        this.$emit('input', event.target.value)
+        this.$emit("input", event.target.value);
       }
     },
     /**
@@ -147,22 +150,25 @@ export default {
      * Emit event with value and state if the component not disabled
      * @arg event
      */
-    onChange (event) {
+    onChange(event) {
       if (!this.disabled) {
         /**
-        * Fired when input is changed
-        * @arg event
-        */
-        this.$emit('input', this.isRadio ? event.target.value : event.target.checked)
+         * Fired when input is changed
+         * @arg event
+         */
+        this.$emit(
+          "input",
+          this.isRadio ? event.target.value : event.target.checked
+        );
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-$input-border-color: #CCCCCC;
-$input-background: #FFFFFF;
+$input-border-color: #cccccc;
+$input-background: #ffffff;
 $input-border-radius: 2px;
 
 $input-padding: $base-size $base-size * 2;
@@ -176,7 +182,7 @@ $checkbox-selected-color: #999;
 
 .impulse-input {
   border: 1px solid $input-border-color;
-  border-radius:  $input-border-radius;
+  border-radius: $input-border-radius;
   background: $input-background;
   padding: $input-padding;
 
@@ -185,9 +191,10 @@ $checkbox-selected-color: #999;
 
   transition: $transition;
 
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     border-color: $input-hover-border;
-    outline:0;
+    outline: 0;
   }
 
   &.disabled {
@@ -195,7 +202,7 @@ $checkbox-selected-color: #999;
     opacity: 0.4;
   }
 
-  &[type='checkbox']{
+  &[type="checkbox"] {
     width: 16px;
     height: 16px;
 
@@ -205,9 +212,10 @@ $checkbox-selected-color: #999;
     appearance: none;
     -ms-appearance: none;
 
-    &:checked{
+    &:checked {
       border-color: $checkbox-selected-color;
-      background: url('../assets/checkbox.svg') $checkbox-selected-color no-repeat center;
+      background: url("../assets/checkbox.svg") $checkbox-selected-color
+        no-repeat center;
       background-size: 80%;
     }
   }

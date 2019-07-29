@@ -36,8 +36,8 @@ body {
 }
 
 #nav {
-  background-color: #FFF;
-  position: fixed!important;
+  background-color: #fff;
+  position: fixed !important;
   z-index: 1;
   overflow: auto;
   height: 100%;

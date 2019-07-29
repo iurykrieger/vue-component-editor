@@ -1,25 +1,45 @@
 <template>
   <section id="component-editor">
     <div class="playground">
-      <component v-if="selectedComponent" :is="selectedComponent" v-bind="currentPropsValues" />
+      <component
+        v-if="selectedComponent"
+        :is="selectedComponent"
+        v-bind="currentPropsValues"
+      />
     </div>
     <div class="editor">
       <select v-model="selectedComponent">
-        <option v-for="(item, index) in components" :key="index" :value="item.component">{{ item.label }}</option>
+        <option
+          v-for="(item, index) in components"
+          :key="index"
+          :value="item.component"
+          >{{ item.label }}</option
+        >
       </select>
       <div v-if="selectedComponent" class="props">
         <div v-for="prop in selectedComponentMetadata.props" :key="prop.name">
-          <div v-if="isString(prop.type)" class="string-prop">
+          <div
+            v-if="isString(prop.type) || isURL(prop.type)"
+            class="string-prop"
+          >
             <label :for="prop.name">{{ prop.name }}</label>
             <TextInput :name="prop.name" v-model.trim="prop.currentValue" />
           </div>
           <div v-else-if="isNumber(prop.type)" class="number-prop">
             <label :for="prop.name">{{ prop.name }}</label>
-            <TextInput type="number" :name="prop.name" v-model.number="prop.currentValue" />
+            <TextInput
+              type="number"
+              :name="prop.name"
+              v-model.number="prop.currentValue"
+            />
           </div>
           <div v-else-if="isBoolean(prop.type)" class="boolean-prop">
             <label :for="prop.name">{{ prop.name }}</label>
-            <TextInput type="checkbox" :name="prop.name" v-model="prop.currentValue" />
+            <TextInput
+              type="checkbox"
+              :name="prop.name"
+              v-model="prop.currentValue"
+            />
           </div>
         </div>
       </div>
@@ -28,44 +48,47 @@
 </template>
 
 <script>
-import TextInput from '@/components/TextInput'
+import TextInput from "@/components/TextInput";
+import { URL } from "url";
 
 export default {
   name: "ComponentEditor",
   components: {
     TextInput
   },
-  data () {
+  data() {
     return {
-      components: [
-        {
-          component: () => import('@/components/Widget'),
-          props: [],
-          label: 'Widget'
-        },
-        {
-          component: () => import ('@/components/Number'),
-          props: [],
-          label: 'Number'
-        }
-      ],
+      components: require
+        .context("@/components", true, /\.vue$/i)
+        .keys()
+        .map(fileName => {
+          const componentName = /\w+/.exec(fileName).pop();
+          return {
+            component: () => import(`@/components/${componentName}`),
+            props: [],
+            label: componentName
+          };
+        }),
       selectedComponent: null
-    }
+    };
   },
   methods: {
-    isString (type) {
-      return type === String
+    isString(type) {
+      return type === String;
     },
-    isObject (type) {
-      return type === Object
+    isObject(type) {
+      return type === Object;
     },
-    isBoolean (type) {
-      return type === Boolean
+    isBoolean(type) {
+      return type === Boolean;
     },
-    isNumber (type) {
-      return type === Number
+    isNumber(type) {
+      return type === Number;
     },
-    getDefaultValueByType (type) {
+    isURL(type) {
+      return type === URL;
+    },
+    getDefaultValueByType(type) {
       switch (type) {
         case Number:
           return 0;
@@ -74,31 +97,36 @@ export default {
         case Boolean:
           return false;
         default:
-          return '';
+          return "";
       }
     }
   },
   computed: {
-    currentPropsValues () {
+    currentPropsValues() {
       return this.selectedComponentMetadata.props.reduce((props, prop) => {
-        props[prop.name] = prop.currentValue
-        return props
-      }, {})
+        props[prop.name] = prop.currentValue;
+        return props;
+      }, {});
     },
-    selectedComponentMetadata () {
-      return this.components.find(({ component }) => component === this.selectedComponent)
+    selectedComponentMetadata() {
+      return this.components.find(
+        ({ component }) => component === this.selectedComponent
+      );
     }
   },
   watch: {
-    async selectedComponent (selectedComponent) {
-      const { default: { props = {} } } = await selectedComponent()
+    async selectedComponent(selectedComponent) {
+      const {
+        default: { props = {} }
+      } = await selectedComponent();
       this.selectedComponentMetadata.props = Object.keys(props).map(prop => ({
         name: prop,
         default: props[prop].default,
         type: props[prop].type,
         validator: props[prop].validator,
-        currentValue: props[prop].default || this.getDefaultValueByType(props[prop].type)
-      }))
+        currentValue:
+          props[prop].default || this.getDefaultValueByType(props[prop].type)
+      }));
     }
   }
 };
@@ -106,8 +134,8 @@ export default {
 
 <style lang="scss" scoped>
 .editor {
-  background-color: #FFFFFF;
-  position: fixed!important;
+  background-color: #ffffff;
+  position: fixed !important;
   z-index: 1;
   overflow: auto;
   height: 100%;
