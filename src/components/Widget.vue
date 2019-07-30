@@ -1,9 +1,9 @@
 <template>
   <Carousel
     class="widget"
-    :per-page="4"
-    :mouse-drag="true"
-    :navigation-enabled="true"
+    :per-page="perPage"
+    :mouse-drag="mouseDrag"
+    :navigation-enabled="navigationEnabled"
     :navigationClickTargetSize="16"
   >
     <Slide v-for="product in products" :key="product.sku">
@@ -123,6 +123,20 @@ export default {
           sellerCount: 2
         }
       ]
+    }
+  },
+  props: {
+    perPage: {
+      type: Number,
+      default: 4
+    },
+    mouseDrag: {
+      type: Boolean,
+      default: false
+    },
+    navigationEnabled: {
+      type: Boolean,
+      default: true
     }
   }
 }
