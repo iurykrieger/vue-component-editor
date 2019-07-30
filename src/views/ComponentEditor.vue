@@ -10,7 +10,7 @@
         />
       </div>
     </div>
-    <multipane-resizer></multipane-resizer>
+    <MultipaneResizer></MultipaneResizer>
     <div class="pane editor">
       <select v-model="selectedComponent">
         <option
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { Multipane, MultipaneResizer } from 'vue-multipane';
+import { Multipane, MultipaneResizer } from 'vue-multipane'
 import TextInput from '@/components/TextInput'
 import Toggle from '@/components/Toggle'
 import { URL } from 'url'
@@ -150,17 +150,18 @@ export default {
     text-align: left;
     padding: 15px;
     overflow: hidden;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid #ccc;
   }
 
   & > .multipane-resizer {
-    margin: 0; left: 0;
+    margin: 0;
+    left: 0;
     position: relative;
 
     &:before {
       display: block;
-      content: "";
+      content: '';
       width: 3px;
       height: 40px;
       position: absolute;
