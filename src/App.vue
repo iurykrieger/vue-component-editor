@@ -54,7 +54,8 @@ body {
 }
 
 #content {
-  margin-left: 20%;
+  left: 20%;
+  width: 80%;
   position: fixed;
 }
 </style>

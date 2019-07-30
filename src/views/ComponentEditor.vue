@@ -12,7 +12,7 @@
     </div>
     <MultipaneResizer></MultipaneResizer>
     <div class="pane editor">
-      <select v-model="selectedComponent">
+      <select v-model="selectedComponent" class="component-selector">
         <option
           v-for="(item, index) in components"
           :key="index"
@@ -148,7 +148,6 @@ export default {
 
   & > .pane {
     text-align: left;
-    padding: 15px;
     overflow: hidden;
     background: #ffffff;
     border: 1px solid #ccc;
@@ -185,7 +184,7 @@ export default {
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     mix-blend-mode: difference;
     background-position: -2px -2px;
-    width: 60%;
+    width: 75%;
   }
 }
 
@@ -199,5 +198,14 @@ export default {
 
 .editor {
   flex-grow: 1;
+}
+
+.component-selector {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding: $base-size;
+  background: #FFFFFF;
+  box-shadow: $box-shadow;
 }
 </style>
