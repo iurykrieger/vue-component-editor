@@ -35,11 +35,11 @@
           </div>
           <div v-else-if="isBoolean(prop.type)" class="boolean-prop">
             <label :for="prop.name">{{ prop.name }}</label>
-            <TextInput
-              type="checkbox"
-              :name="prop.name"
-              v-model="prop.currentValue"
-            />
+            <Toggle :name="prop.name" v-model="prop.currentValue" />
+          </div>
+          <div v-else-if="isObject(prop.type)" class="object-prop">
+            <label :for="prop.name">{{ prop.name }}</label>
+            <textarea :name="prop.name" v-model="prop.currentValue" />
           </div>
         </div>
       </div>
@@ -48,77 +48,79 @@
 </template>
 
 <script>
-import TextInput from "@/components/TextInput";
-import { URL } from "url";
+import TextInput from '@/components/TextInput'
+import Toggle from '@/components/Toggle'
+import { URL } from 'url'
 
 export default {
-  name: "ComponentEditor",
+  name: 'ComponentEditor',
   components: {
-    TextInput
+    TextInput,
+    Toggle
   },
   data() {
     return {
       components: require
-        .context("@/components", true, /\.vue$/i)
+        .context('@/components', true, /\.vue$/i)
         .keys()
         .map(fileName => {
-          const componentName = /\w+/.exec(fileName).pop();
+          const componentName = /\w+/.exec(fileName).pop()
           return {
             component: () => import(`@/components/${componentName}`),
             props: [],
             label: componentName
-          };
+          }
         }),
       selectedComponent: null
-    };
+    }
   },
   methods: {
     isString(type) {
-      return type === String;
+      return type === String
     },
     isObject(type) {
-      return type === Object;
+      return type === Object
     },
     isBoolean(type) {
-      return type === Boolean;
+      return type === Boolean
     },
     isNumber(type) {
-      return type === Number;
+      return type === Number
     },
     isURL(type) {
-      return type === URL;
+      return type === URL
     },
     getDefaultValueByType(type) {
       switch (type) {
         case Number:
-          return 0;
+          return 0
         case Object:
-          return {};
+          return {}
         case Boolean:
-          return false;
+          return false
         default:
-          return "";
+          return ''
       }
     }
   },
   computed: {
     currentPropsValues() {
       return this.selectedComponentMetadata.props.reduce((props, prop) => {
-        props[prop.name] = prop.currentValue;
-        return props;
-      }, {});
+        props[prop.name] = prop.currentValue
+        return props
+      }, {})
     },
     selectedComponentMetadata() {
       return this.components.find(
         ({ component }) => component === this.selectedComponent
-      );
+      )
     }
   },
   watch: {
     async selectedComponent(selectedComponent) {
       const {
         default: { props = {} }
-      } = await selectedComponent();
+      } = await selectedComponent()
       this.selectedComponentMetadata.props = Object.keys(props).map(prop => ({
         name: prop,
         default: props[prop].default,
@@ -126,10 +128,10 @@ export default {
         validator: props[prop].validator,
         currentValue:
           props[prop].default || this.getDefaultValueByType(props[prop].type)
-      }));
+      }))
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

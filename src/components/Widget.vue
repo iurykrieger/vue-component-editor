@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import { Carousel, Slide } from "vue-carousel";
-import Product from "@/components/Product";
+import { Carousel, Slide } from 'vue-carousel'
+import Product from '@/components/Product'
 
 export default {
-  name: "Widget",
+  name: 'Widget',
   components: {
     Carousel,
     Slide,
@@ -38,13 +38,13 @@ export default {
     return {
       products: [
         {
-          sku: "1234",
-          url: "https://example.com",
+          sku: '1234',
+          url: 'https://example.com',
           thumbnail:
-            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
-          name: "Produto Teste com um nome um pouco maior do que o normal",
-          brand: "SEPHORA",
-          description: "Product description",
+            'https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg',
+          name: 'Produto Teste com um nome um pouco maior do que o normal',
+          brand: 'SEPHORA',
+          description: 'Product description',
           rating: {
             count: 12,
             best: 5,
@@ -55,13 +55,13 @@ export default {
           sellerCount: 2
         },
         {
-          sku: "1235",
-          url: "https://example.com",
+          sku: '1235',
+          url: 'https://example.com',
           thumbnail:
-            "https://thumbs.buscape.com.br/tv/smart-tv-full-hd-aoc-led-43-polegadas-le43s5970_300x300-PU9ae3d_1.jpg",
-          name: "Produto Teste",
-          brand: "SEPHORA",
-          description: "Product description",
+            'https://thumbs.buscape.com.br/tv/smart-tv-full-hd-aoc-led-43-polegadas-le43s5970_300x300-PU9ae3d_1.jpg',
+          name: 'Produto Teste',
+          brand: 'SEPHORA',
+          description: 'Product description',
           rating: {
             count: 12,
             best: 5,
@@ -72,13 +72,13 @@ export default {
           sellerCount: 2
         },
         {
-          sku: "1232",
-          url: "https://example.com",
+          sku: '1232',
+          url: 'https://example.com',
           thumbnail:
-            "https://thumbs.buscape.com.br/livros/a-sutil-arte-de-ligar-o-f-da-se-manson-mark-855100249x_300x300-PU6e929559_1.jpg",
-          name: "Produto Teste",
-          brand: "SEPHORA",
-          description: "Product description",
+            'https://thumbs.buscape.com.br/livros/a-sutil-arte-de-ligar-o-f-da-se-manson-mark-855100249x_300x300-PU6e929559_1.jpg',
+          name: 'Produto Teste',
+          brand: 'SEPHORA',
+          description: 'Product description',
           rating: {
             count: 12,
             best: 5,
@@ -89,13 +89,13 @@ export default {
           sellerCount: 2
         },
         {
-          sku: "1231",
-          url: "https://example.com",
+          sku: '1231',
+          url: 'https://example.com',
           thumbnail:
-            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
-          name: "Smart TV 4K Ultra HD LG LED 65 polegadas 65UK6530PSF",
-          brand: "SEPHORA",
-          description: "Product description",
+            'https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg',
+          name: 'Smart TV 4K Ultra HD LG LED 65 polegadas 65UK6530PSF',
+          brand: 'SEPHORA',
+          description: 'Product description',
           rating: {
             count: 12,
             best: 5,
@@ -106,13 +106,13 @@ export default {
           sellerCount: 2
         },
         {
-          sku: "12",
-          url: "https://example.com",
+          sku: '12',
+          url: 'https://example.com',
           thumbnail:
-            "https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg",
-          name: "Produto Teste",
-          brand: "SEPHORA",
-          description: "Product description",
+            'https://thumbs.buscape.com.br/tv/smart-tv-4k-ultra-hd-lg-led-55-polegadas-55sk8500psa_300x300-PUa2150_1.jpg',
+          name: 'Produto Teste',
+          brand: 'SEPHORA',
+          description: 'Product description',
           rating: {
             count: 12,
             best: 5,
@@ -123,9 +123,9 @@ export default {
           sellerCount: 2
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

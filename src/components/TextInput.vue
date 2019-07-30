@@ -42,12 +42,12 @@
 
 <script>
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   directives: {
     autoFocus: {
       inserted: function(el) {
         if (this.autoFocus) {
-          el.focus();
+          el.focus()
         }
       }
     }
@@ -58,7 +58,7 @@ export default {
      */
     type: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     /**
      * Set name of input
@@ -104,21 +104,21 @@ export default {
      * Verify if component input is checkbox
      */
     isCheckbox() {
-      return this.type === "checkbox";
+      return this.type === 'checkbox'
     },
     /**
      * @vuese
      * Verify if component input is radio
      */
     isRadio() {
-      return this.type === "radio";
+      return this.type === 'radio'
     },
     /**
      * @vuese
      * Verify if component input is radio checked
      */
     isRadioChecked() {
-      return this.value === this.label;
+      return this.value === this.label
     }
   },
   methods: {
@@ -127,14 +127,14 @@ export default {
      * Emit event if the component gain the focus
      */
     onFocusGain(event) {
-      this.$emit("focus-gain", event);
+      this.$emit('focus-gain', event)
     },
     /**
      * @vuese
      * Emit event if the component loss the focus
      */
     onFocusLoss(event) {
-      this.$emit("focus-loss", event);
+      this.$emit('focus-loss', event)
     },
     /**
      * @vuese
@@ -142,7 +142,7 @@ export default {
      */
     onInput(event) {
       if (!this.disabled) {
-        this.$emit("input", event.target.value);
+        this.$emit('input', event.target.value)
       }
     },
     /**
@@ -157,13 +157,13 @@ export default {
          * @arg event
          */
         this.$emit(
-          "input",
+          'input',
           this.isRadio ? event.target.value : event.target.checked
-        );
+        )
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -202,7 +202,7 @@ $checkbox-selected-color: #999;
     opacity: 0.4;
   }
 
-  &[type="checkbox"] {
+  &[type='checkbox'] {
     width: 16px;
     height: 16px;
 
@@ -214,7 +214,7 @@ $checkbox-selected-color: #999;
 
     &:checked {
       border-color: $checkbox-selected-color;
-      background: url("../assets/checkbox.svg") $checkbox-selected-color
+      background: url('../assets/checkbox.svg') $checkbox-selected-color
         no-repeat center;
       background-size: 80%;
     }

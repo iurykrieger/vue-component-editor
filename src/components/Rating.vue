@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import NumberFormatter from "@/components/Number";
+import NumberFormatter from '@/components/Number'
 
 export default {
-  name: "Rating",
+  name: 'Rating',
   components: {
     Number: NumberFormatter
   },
@@ -32,10 +32,10 @@ export default {
     ratingWidth() {
       return {
         width: `${(this.value / this.best) * 100}%`
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

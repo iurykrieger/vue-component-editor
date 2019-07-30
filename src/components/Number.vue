@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
 export default {
-  name: "Number",
+  name: 'Number',
   props: {
     /**
      * Setting the value
@@ -21,8 +21,8 @@ export default {
      */
     format: {
       type: String,
-      default: "decimal",
-      validator: style => ["decimal", "percent", "currency"].includes(style)
+      default: 'decimal',
+      validator: style => ['decimal', 'percent', 'currency'].includes(style)
     }
   },
   computed: {
@@ -33,18 +33,18 @@ export default {
     }),
     formattedNumber() {
       try {
-        const value = this.format === "percent" ? this.value / 100 : this.value;
+        const value = this.format === 'percent' ? this.value / 100 : this.value
         return value.toLocaleString(this.locale, {
           style: this.format,
           currency: this.currency,
           currencyDisplay: this.currencyDisplay
-        });
+        })
       } catch (error) {
-        return this.value.toString();
+        return this.value.toString()
       }
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss"></style>

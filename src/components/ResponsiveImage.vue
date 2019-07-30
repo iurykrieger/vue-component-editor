@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "ResponsiveImage",
+  name: 'ResponsiveImage',
   props: {
     src: {
       type: String,
@@ -14,7 +14,7 @@ export default {
       type: String
     }
   }
-};
+}
 </script>
 
 <style scoped type="scss">

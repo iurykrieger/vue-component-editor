@@ -61,14 +61,14 @@
 </template>
 
 <script>
-import ResponsiveImage from "@/components/ResponsiveImage";
-import NumberFormatter from "@/components/Number";
-import Rating from "@/components/Rating";
-import { mapState } from "vuex";
-import { URL } from "url";
+import ResponsiveImage from '@/components/ResponsiveImage'
+import NumberFormatter from '@/components/Number'
+import Rating from '@/components/Rating'
+import { mapState } from 'vuex'
+import { URL } from 'url'
 
 export default {
-  name: "Product",
+  name: 'Product',
   components: {
     ResponsiveImage,
     Number: NumberFormatter,
@@ -106,17 +106,17 @@ export default {
     },
     availability: {
       type: String,
-      default: "InStock",
+      default: 'InStock',
       validator: status => [
-        "Discontinued",
-        "InStock",
-        "InStoreOnly",
-        "LimitedAvailability",
-        "OnlineOnly",
-        "OutOfStock",
-        "PreOrder",
-        "PreSale",
-        "SoldOut"
+        'Discontinued',
+        'InStock',
+        'InStoreOnly',
+        'LimitedAvailability',
+        'OnlineOnly',
+        'OutOfStock',
+        'PreOrder',
+        'PreSale',
+        'SoldOut'
       ]
     },
     rating: {
@@ -128,7 +128,7 @@ export default {
     },
     itemCondition: {
       type: String,
-      default: "NewCondition"
+      default: 'NewCondition'
     }
   },
   computed: {
@@ -136,13 +136,13 @@ export default {
       currency: state => state.i18n.currency
     }),
     availabilitySchema() {
-      return `https://schema.org/${this.availability}`;
+      return `https://schema.org/${this.availability}`
     },
     itemConditionSchema() {
-      return `https://schema.org/${this.itemCondition}`;
+      return `https://schema.org/${this.itemCondition}`
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">
