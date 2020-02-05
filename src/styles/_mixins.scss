@@ -1,0 +1,137 @@
+
+@mixin shake {
+    @-webkit-keyframes kf_shake {
+      0% {
+        -webkit-transform: translate(20px);
+      }
+      20% {
+        -webkit-transform: translate(-20px);
+      }
+      40% {
+        -webkit-transform: translate(10px);
+      }
+      60% {
+        -webkit-transform: translate(-10px);
+      }
+      80% {
+        -webkit-transform: translate(5px);
+      }
+      100% {
+        -webkit-transform: translate(0px);
+      }
+    }
+    @-moz-keyframes kf_shake {
+      0% {
+        -moz-transform: translate(20px);
+      }
+      20% {
+        -moz-transform: translate(-20px);
+      }
+      40% {
+        -moz-transform: translate(10px);
+      }
+      60% {
+        -moz-transform: translate(-10px);
+      }
+      80% {
+        -moz-transform: translate(5px);
+      }
+      100% {
+        -moz-transform: translate(0px);
+      }
+    }
+    @-o-keyframes kf_shake {
+      0% {
+        -o-transform: translate(20px);
+      }
+      20% {
+        -o-transform: translate(-20px);
+      }
+      40% {
+        -o-transform: translate(10px);
+      }
+      60% {
+        -o-transform: translate(-10px);
+      }
+      80% {
+        -o-transform: translate(5px);
+      }
+      100% {
+        -o-origin-transform: translate(0px);
+      }
+    }
+  
+    -webkit-animation: kf_shake 0.4s 1 linear;
+    -moz-animation: kf_shake 0.4s 1 linear;
+    -o-animation: kf_shake 0.4s 1 linear;
+  }
+  
+  @mixin placeholder($color) {
+    &::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: $color;
+    }
+    &::-moz-placeholder {
+      /* Firefox 19+ */
+      color: $color;
+    }
+    &:-ms-input-placeholder {
+      /* IE 10+ */
+      color: $color;
+    }
+    &:-moz-placeholder {
+      /* Firefox 18- */
+      color: $color;
+    }
+  }
+
+@mixin impulse-clear-list {
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      text-indent: 0;
+    }
+  }
+  
+  // GRADIENT
+  @mixin gradient($initial-color, $final-color) {
+    // Default use:
+    // @include gradient([color 1], [color 2]);
+    background: $final-color;
+    background: -webkit-linear-gradient(to right, $initial-color, $final-color);
+    background: linear-gradient(to right, $initial-color, $final-color);
+  }
+  
+  @mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    transform: rotate($degrees);
+  }
+  
+  // Scroll mobile
+  .impulse-scroll::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 3px;
+  }
+  .impulse-scroll::-webkit-scrollbar-thumb {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #dedede;
+    -webkit-box-shadow: 0 0 1px rgb(226, 226, 226);
+  }
+
+  @mixin noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+  }

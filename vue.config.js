@@ -1,4 +1,7 @@
 module.exports = {
+  devServer: {
+    host: 'suite.development.linximpulse.net'
+  },
   css: {
     loaderOptions: {
       sass: {

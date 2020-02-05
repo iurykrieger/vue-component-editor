@@ -9,6 +9,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@linx-impulse/engage-components-vue": "git+ssh://git@github.com/chaordic/engage-components-vue.git#semver:^2",
+    "@linx-impulse/engage-autocomplete-vue": "git+ssh://git@github.com/chaordic/engage-autocomplete-vue.git#semver:^2",
+    "@linx-impulse/engage-search-vue": "git+ssh://git@github.com/chaordic/engage-search-vue.git#semver:^2",
     "core-js": "^2.6.5",
     "normalize-scss": "^7.0.1",
     "vue": "^2.6.10",

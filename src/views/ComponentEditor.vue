@@ -6,7 +6,7 @@
         <component
           v-if="selectedComponent"
           :is="selectedComponent"
-          v-bind="currentPropsValues"
+          v-bind="selectedComponentProps"
         />
       </div>
     </div>
@@ -14,129 +14,57 @@
     <div class="pane editor">
       <select v-model="selectedComponent" class="component-selector">
         <option
-          v-for="(item, index) in components"
+          v-for="(component, index) in components"
           :key="index"
-          :value="item.component"
-          >{{ item.label }}</option
+          :value="component.value"
         >
+          {{ component.label }}
+        </option>
       </select>
       <div v-if="selectedComponent" class="props">
-        <div v-for="prop in selectedComponentMetadata.props" :key="prop.name">
-          <div
-            v-if="isString(prop.type) || isURL(prop.type)"
-            class="string-prop"
-          >
-            <label :for="prop.name">{{ prop.name }}</label>
-            <TextInput :name="prop.name" v-model.trim="prop.currentValue" />
-          </div>
-          <div v-else-if="isNumber(prop.type)" class="number-prop">
-            <label :for="prop.name">{{ prop.name }}</label>
-            <TextInput
-              type="number"
-              :name="prop.name"
-              v-model.number="prop.currentValue"
-            />
-          </div>
-          <div v-else-if="isBoolean(prop.type)" class="boolean-prop">
-            <label :for="prop.name">{{ prop.name }}</label>
-            <Toggle :name="prop.name" v-model="prop.currentValue" />
-          </div>
-          <div v-else-if="isObject(prop.type)" class="object-prop">
-            <label :for="prop.name">{{ prop.name }}</label>
-            <textarea :name="prop.name" v-model="prop.currentValue" />
-          </div>
-        </div>
+        <ComponentPropEditor
+          :component="selectedComponent"
+          v-model="selectedComponentProps"
+        />
       </div>
     </div>
   </Multipane>
 </template>
 
 <script>
+import * as ImpulseComponents from '@linx-impulse/engage-components-vue'
+import * as ImpulseAutocomplete from '@linx-impulse/engage-autocomplete-vue'
+import * as ImpulseSearch from '@linx-impulse/engage-search-vue'
 import { Multipane, MultipaneResizer } from 'vue-multipane'
-import TextInput from '@/components/TextInput'
-import Toggle from '@/components/Toggle'
-import { URL } from 'url'
+import ComponentPropEditor from '@/components/ComponentPropEditor'
 
 export default {
   name: 'ComponentEditor',
   components: {
-    TextInput,
-    Toggle,
     Multipane,
-    MultipaneResizer
+    MultipaneResizer,
+    ComponentPropEditor
   },
   data() {
     return {
-      components: require
-        .context('@/components', true, /\.vue$/i)
-        .keys()
-        .map(fileName => {
-          const componentName = /\w+/.exec(fileName).pop()
-          return {
-            component: () => import(`@/components/${componentName}`),
-            props: [],
-            label: componentName
-          }
-        }),
-      selectedComponent: null
+      components: [],
+      selectedComponent: null,
+      selectedComponentProps: {}
     }
   },
-  methods: {
-    isString(type) {
-      return type === String
-    },
-    isObject(type) {
-      return type === Object
-    },
-    isBoolean(type) {
-      return type === Boolean
-    },
-    isNumber(type) {
-      return type === Number
-    },
-    isURL(type) {
-      return type === URL
-    },
-    getDefaultValueByType(type) {
-      switch (type) {
-        case Number:
-          return 0
-        case Object:
-          return {}
-        case Boolean:
-          return false
-        default:
-          return ''
+  created() {
+    const components = {
+      ...ImpulseComponents,
+      ...ImpulseAutocomplete,
+      ...ImpulseSearch
+    }
+
+    this.components = Object.keys(components).map(componentName => {
+      return {
+        value: components[componentName],
+        label: componentName
       }
-    }
-  },
-  computed: {
-    currentPropsValues() {
-      return this.selectedComponentMetadata.props.reduce((props, prop) => {
-        props[prop.name] = prop.currentValue
-        return props
-      }, {})
-    },
-    selectedComponentMetadata() {
-      return this.components.find(
-        ({ component }) => component === this.selectedComponent
-      )
-    }
-  },
-  watch: {
-    async selectedComponent(selectedComponent) {
-      const {
-        default: { props = {} }
-      } = await selectedComponent()
-      this.selectedComponentMetadata.props = Object.keys(props).map(prop => ({
-        name: prop,
-        default: props[prop].default,
-        type: props[prop].type,
-        validator: props[prop].validator,
-        currentValue:
-          props[prop].default || this.getDefaultValueByType(props[prop].type)
-      }))
-    }
+    })
   }
 }
 </script>
@@ -190,7 +118,6 @@ export default {
 
 .component {
   position: absolute;
-  width: 85%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -203,9 +130,9 @@ export default {
 .component-selector {
   width: 100%;
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   padding: $base-size;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: $box-shadow;
 }
 </style>

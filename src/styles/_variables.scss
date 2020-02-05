@@ -9,6 +9,7 @@
 $base-size: 8px; // This will be used in fonts and paddings
 
 $transition: 0.4s all;
+$default-transition: $transition;
 
 /**
  =======================
@@ -18,6 +19,12 @@ $transition: 0.4s all;
 $font-family: montserrat-regular; // "Avenir", Helvetica, Arial, sans-serif;
 
 $font-size: 1em;
+
+$text-font: Arial;
+
+$title-size: 14px;
+
+$text-size: 14px;
 
 /**
  =======================
@@ -39,3 +46,81 @@ $accent-color: #22b14c;
 $box-shadow: 0 2px 5px 0 rgba(0,0,0,.08);
 
 $box-shadow-hover: 0 2px 10px 0 rgba(0,0,0,.2);
+
+/**
+ =======================
+  COMPONENTS
+ =======================
+ */
+
+// Default
+$button-color: #FFFFFF;
+$button-background: #666666;
+$button-border: #666666;
+
+// Hover
+$button-hover-color: #666666;
+$button-hover-background: #ffffff;
+$button-hover-border: #666666;
+
+// Active
+$button-active-color: #ffffff;
+$button-active-background: #333333;
+$button-active-border: #333333;
+
+// Off
+$button-off-color: #ccc;
+$button-off-background: #eee;
+$button-off-border: #eee;
+
+/**
+ =======================
+  SEARCH
+ =======================
+ */
+$search-width: 1200px;
+
+$color-title: #FF7F2F;
+
+$link-color: #FF7F2F;
+
+$collapse-button-size: 12px;
+
+$filter-title-size: 20px;
+
+$product-title-weight: normal;
+
+$quantity-size: 12px;
+
+$search-filter-size: 12px;
+
+$button-color-inverted: #666666;
+
+$button-background-inverted: #FFFFFF;
+
+$product-title-height: $base-size * 4 + 2;
+
+$product-suggestion-font-size: $base-size * 2 - 2;
+
+$product-title-line-heigt: $base-size * 2 + 4;
+
+$old-price-color: #b1b1b1;
+
+$price-size: $product-suggestion-font-size + 2;
+
+$price-color: #FF7F2F;
+
+$price-weight: bold;
+
+/**
+ =======================
+  AUTOCOMPLETE
+ =======================
+ */
+$error-color: #e49c2e;
+
+$autocomplete-width: 600px;
+
+$autocomplete-border: #ccc;
+
+$autocomplete-separator-color: #ccc;
